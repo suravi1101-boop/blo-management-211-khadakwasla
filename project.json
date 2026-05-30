@@ -1,0 +1,21 @@
+{
+  "overview": "BLO Management System for 211 Khadakwasla Assembly Constituency - manages Booth Level Officers, honorarium, notices, and official documents in Marathi.",
+  "features": [
+    "Supervisor year/quarter honorarium marking",
+    "Admin BLO Honorarium tab with flexible amounts",
+    "Bank-wise Excel export",
+    "Extra allowance with Select All",
+    "Eligibility tab fix",
+    "Excluded BLO list",
+    "Role-based access for supervisor and admin"
+  ],
+  "category": "government-admin",
+  "tags": [
+    "marathi",
+    "blo-management",
+    "honorarium",
+    "election",
+    "government"
+  ],
+  "last_updated": "2026-05-29T04:00:30.106Z"
+}

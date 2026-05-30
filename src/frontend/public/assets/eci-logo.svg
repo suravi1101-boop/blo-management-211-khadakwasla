@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- ECI-style emblem: simplified Ashoka Chakra + shield -->
+  <circle cx="100" cy="100" r="98" fill="#1a3a6b" stroke="#d4af37" stroke-width="3"/>
+  <!-- Inner white circle -->
+  <circle cx="100" cy="100" r="70" fill="white"/>
+  <!-- Ashoka Chakra -->
+  <circle cx="100" cy="100" r="35" fill="none" stroke="#1a3a6b" stroke-width="3"/>
+  <circle cx="100" cy="100" r="6" fill="#1a3a6b"/>
+  <!-- 24 spokes -->
+  <g stroke="#1a3a6b" stroke-width="1.5">
+    <line x1="100" y1="100" x2="100" y2="65"/>
+    <line x1="100" y1="100" x2="108.8" y2="65.6"/>
+    <line x1="100" y1="100" x2="117.1" y2="67.6"/>
+    <line x1="100" y1="100" x2="124.7" y2="72.3"/>
+    <line x1="100" y1="100" x2="131.4" y2="79.1"/>
+    <line x1="100" y1="100" x2="135" y2="87.7"/>
+    <line x1="100" y1="100" x2="135" y2="97"/>
+    <line x1="100" y1="100" x2="135" y2="106.3"/>
+    <line x1="100" y1="100" x2="131.4" y2="114.9"/>
+    <line x1="100" y1="100" x2="124.7" y2="121.7"/>
+    <line x1="100" y1="100" x2="117.1" y2="126.4"/>
+    <line x1="100" y1="100" x2="108.8" y2="128.4"/>
+    <line x1="100" y1="100" x2="100" y2="130"/>
+    <line x1="100" y1="100" x2="91.2" y2="128.4"/>
+    <line x1="100" y1="100" x2="82.9" y2="126.4"/>
+    <line x1="100" y1="100" x2="75.3" y2="121.7"/>
+    <line x1="100" y1="100" x2="68.6" y2="114.9"/>
+    <line x1="100" y1="100" x2="65" y2="106.3"/>
+    <line x1="100" y1="100" x2="65" y2="97"/>
+    <line x1="100" y1="100" x2="65" y2="87.7"/>
+    <line x1="100" y1="100" x2="68.6" y2="79.1"/>
+    <line x1="100" y1="100" x2="75.3" y2="72.3"/>
+    <line x1="100" y1="100" x2="82.9" y2="67.6"/>
+    <line x1="100" y1="100" x2="91.2" y2="65.6"/>
+  </g>
+  <!-- ECI text arc area -->
+  <text x="100" y="152" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="#1a3a6b">ELECTION COMMISSION</text>
+  <text x="100" y="162" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="#1a3a6b">OF INDIA</text>
+  <!-- Top: Lions (simplified as text) -->
+  <text x="100" y="56" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#d4af37">⚖</text>
+</svg>

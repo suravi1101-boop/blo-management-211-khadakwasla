@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .hover-lift {
+    @apply transition-smooth hover:shadow-md;
+  }
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Government Blue Theme */
+    --background: #f8fafc;
+    --foreground: #0f172a;
+    --card: #ffffff;
+    --card-foreground: #0f172a;
+    --popover: #ffffff;
+    --popover-foreground: #0f172a;
+    --primary: #1d4ed8;
+    --primary-foreground: #ffffff;
+    --secondary: #e8eef8;
+    --secondary-foreground: #1e3a6e;
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+    --accent: #f59e0b;
+    --accent-foreground: #78350f;
+    --destructive: #dc2626;
+    --destructive-foreground: #ffffff;
+    --border: #cbd5e1;
+    --input: #e2e8f0;
+    --ring: #1d4ed8;
+
+    --chart-1: #1d4ed8;
+    --chart-2: #f59e0b;
+    --chart-3: #16a34a;
+    --chart-4: #0891b2;
+    --chart-5: #dc2626;
+
+    /* Sidebar - deep navy */
+    --sidebar: #1e3a6e;
+    --sidebar-foreground: #f8fafc;
+    --sidebar-primary: #f59e0b;
+    --sidebar-primary-foreground: #78350f;
+    --sidebar-accent: #2d5299;
+    --sidebar-accent-foreground: #f8fafc;
+    --sidebar-border: #172d5a;
+    --sidebar-ring: #f59e0b;
+  }
+
+  * {
+    border-color: var(--border);
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: "Noto Sans Devanagari", "Plus Jakarta Sans", "DM Sans",
+      sans-serif;
+  }
+}
+
+/* Explicit fallback to ensure visibility */
+html,
+body,
+#root {
+  min-height: 100vh;
+}
+
+html {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+#root {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Print styles */
+@media print {
+  /* Hide everything */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Show only the print template and its children */
+  .print-only,
+  .print-only * {
+    visibility: visible !important;
+    display: revert !important;
+  }
+
+  /* Use absolute (not fixed) so multi-page content and page breaks work */
+  .print-only {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: white !important;
+    z-index: 9999;
+    font-family: "Noto Sans Devanagari", "Times New Roman", serif !important;
+    font-size: 12pt;
+    color: #000 !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  /* Batch report print area */
+  #batch-report-print-area,
+  #batch-report-print-area * {
+    visibility: visible !important;
+    display: revert !important;
+  }
+  #batch-report-print-area {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: white !important;
+    z-index: 9999;
+    font-family: "Noto Sans Devanagari", "Times New Roman", serif !important;
+    font-size: 11pt;
+    color: #000 !important;
+  }
+
+  /* Supervisor quarterly report print area */
+  #sup-quarterly-report-print-area,
+  #sup-quarterly-report-print-area * {
+    visibility: visible !important;
+    display: revert !important;
+  }
+  #sup-quarterly-report-print-area {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: white !important;
+    z-index: 9999;
+    font-family: "Noto Sans Devanagari", "Times New Roman", serif !important;
+    font-size: 11pt;
+    color: #000 !important;
+  }
+
+  /* BLO quarterly report print area */
+  #blo-quarterly-report-print-area,
+  #blo-quarterly-report-print-area * {
+    visibility: visible !important;
+    display: revert !important;
+  }
+  #blo-quarterly-report-print-area {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: white !important;
+    z-index: 9999;
+    font-family: "Noto Sans Devanagari", "Times New Roman", serif !important;
+    font-size: 11pt;
+    color: #000 !important;
+  }
+
+  /* Page break support */
+  .page-break {
+    page-break-before: always;
+  }
+
+  /* Honorarium Excel export: A4 landscape */
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+}
+
+/* Constituency card disabled state — blocks all pointer and touch events */
+.constituency-card-disabled {
+  opacity: 0.5;
+  pointer-events: none !important;
+  cursor: not-allowed;
+  position: relative;
+}
+.constituency-card-disabled::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  touch-action: none;
+}
+
+/* Landscape print utility */
+.print-landscape {
+  /* Applied via @page in print context */
+}
+@media print {
+  .print-landscape + * {
+    /* noop — actual landscape is triggered by JS window.print with CSS below */
+  }
+}
+
+.print-only {
+  display: none;
+}
+
+.constituency-card[data-disabled="true"],
+.constituency-card[data-disabled="true"] * {
+  pointer-events: none !important;
+  touch-action: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+[data-disabled="true"] {
+  pointer-events: none !important;
+  touch-action: none !important;
+}
+
+.disabled-constituency-card {
+  pointer-events: none !important;
+  touch-action: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+.disabled-constituency-card * {
+  pointer-events: none !important;
+  touch-action: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}

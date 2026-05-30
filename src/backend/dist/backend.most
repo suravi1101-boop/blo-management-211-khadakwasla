@@ -1,0 +1,344 @@
+// Version: 1.0.0
+type AavakJavakEntry__267854335 =
+  {
+    constituency : Text;
+    createdBy : Text;
+    date : Int;
+    description : Text;
+    documentType : Text;
+    entryType : Text;
+    fromTo : Text;
+    id : Text;
+    linkedDocId : ?Text;
+    referenceNumber : Text
+  };
+type AppointmentDateChange__486183939 =
+  {
+    bloId : Text;
+    constituencyId : Text;
+    createdAt : Int;
+    id : Text;
+    newDate : Int;
+    oldDate : Int;
+    reason : Text
+  };
+type AppointmentOrder__369927596 =
+  {
+    bloId : Text;
+    constituencyId : Text;
+    content : Text;
+    createdAt : Int;
+    id : Text;
+    issuedDate : Int;
+    orderNumber : Text;
+    status : Text
+  };
+type BLO__441769439 =
+  {
+    aadhaar : ?Text;
+    appointmentOrderId : ?Text;
+    bankAccount : ?Text;
+    constituencyId : Text;
+    createdAt : Int;
+    designation : Text;
+    email : ?Text;
+    id : Text;
+    isExcellent : Bool;
+    name : Text;
+    officeAddress : ?Text;
+    partName : Text;
+    partNumber : Text;
+    phone : Text;
+    status : Text;
+    updatedAt : Int;
+    voterId : ?Text
+  };
+type BankDetails__693143613 =
+  {accountNumber : Text; bankName : Text; branchName : Text; ifscCode : Text};
+type ConstituencyConfig__210789113 =
+  {
+    adminPassword : Text;
+    id : Text;
+    isEnabled : Bool;
+    lockedUntil : ?Int;
+    loginAttempts : Nat;
+    name : Text;
+    passwordChangedAt : Int;
+    updatedAt : Int
+  };
+type Data__80296667<K, V> =
+  {var count : Nat__1040412405; kvs : [var ?(K, V)]};
+type ExtraPayment__511053032 =
+  {
+    amount : Nat;
+    bloId : Text;
+    bloName : ?Text;
+    constituencyId : Text;
+    createdAt : Int;
+    id : Text;
+    partNumber : ?Text;
+    reason : Text;
+    status : Text
+  };
+type GPSLocation__997299511 =
+  {
+    constituencyId : Text;
+    lat : Float;
+    lon : Float;
+    pollingStationId : Text;
+    updatedAt : Int;
+    updatedBy : Text;
+    updatedByName : Text;
+    updatedByRole : Text
+  };
+type HonorariumConfig__1043070861 =
+  {
+    baseAmount : Nat;
+    constituencyId : Text;
+    currency : Text;
+    effectiveFrom : Int
+  };
+type HonorariumDistribution__162515005 =
+  {
+    baseAmount : Nat;
+    constituencyId : Text;
+    createdAt : Int;
+    createdBy : Text;
+    id : Text;
+    note : Text;
+    quarter : Text;
+    year : Text
+  };
+type HonorariumEligibility__792402 =
+  {
+    bloId : Text;
+    constituencyId : Text;
+    isManuallyIncluded : Bool;
+    overrideAt : ?Int;
+    overrideBy : ?Text;
+    overrideReason : ?Text
+  };
+type HonorariumRecord__335692989 =
+  {
+    amount : Nat;
+    approvedAt : ?Int;
+    approvedBy : ?Text;
+    bloId : Text;
+    constituencyId : Text;
+    createdAt : Int;
+    id : Text;
+    note : ?Text;
+    paidAt : ?Int;
+    quarter : Text;
+    status : Text;
+    supervisorId : ?Text
+  };
+type Internal__41346355<K, V> =
+  {children : [var ?Node__1000929467<K, V>]; data : Data__80296667<K, V>};
+type Leaf__712614010<K, V> = {data : Data__80296667<K, V>};
+type Map__222667396<K, V> = Map__912772452<K, V>;
+type Map__709709801<K, V> =
+  {var root : Node__1000929467<K, V>; var size : Nat__1040412405};
+type Map__912772452<K, V> = Map__709709801<K, V>;
+type Nat__1040412405 = Nat__920180692;
+type Nat__920180692 = Nat;
+type NodalOfficer__944075465 =
+  {
+    assignedSupervisorIds : [Text];
+    constituencyId : Text;
+    createdAt : Int;
+    designation : Text;
+    id : Text;
+    isActive : Bool;
+    isLocked : Bool;
+    loginAttempts : Nat;
+    mobileNumber : ?Text;
+    name : Text;
+    password : ?Text;
+    phone : Text;
+    updatedAt : Int
+  };
+type Node__1000929467<K, V> =
+  {#internal : Internal__41346355<K, V>; #leaf : Leaf__712614010<K, V>};
+type NoticeRecipientStatus__65793229 =
+  {
+    deliveredAt : ?Int;
+    deliveryStatus : Text;
+    readAt : ?Int;
+    recipientId : Text;
+    recipientType : Text
+  };
+type NoticeSettings__710684804 =
+  {
+    constituencyId : Text;
+    noticeHeaderEmail : Text;
+    noticeHeaderLine1 : Text;
+    noticeHeaderLine2 : Text;
+    noticeHeaderPhone : Text;
+    noticeOfficerConstituency : Text;
+    noticeOfficerDesignation : Text;
+    noticeOfficerName : Text;
+    noticeOfficerTehsil : Text;
+    updatedAt : Int
+  };
+type Notice__391022898 =
+  {
+    clearedAt : ?Int;
+    clearedById : ?Text;
+    clearedByName : ?Text;
+    clearedForHonorarium : Bool;
+    constituencyId : Text;
+    content : Text;
+    createdAt : Int;
+    createdById : Text;
+    createdByName : Text;
+    createdByRole : Text;
+    id : Text;
+    issuedDate : Int;
+    issuingAuthority : Text;
+    noticeNumber : Text;
+    noticeRecipients : [NoticeRecipientStatus__65793229];
+    noticeType : Text;
+    printHistory : [PrintRecord__89949826];
+    recipientId : Text;
+    recipientType : Text;
+    status : Text;
+    subject : Text;
+    updatedAt : Int
+  };
+type OfficialDocumentMeta__173003148 =
+  {
+    category : Text;
+    constituency : Text;
+    fileKey : Text;
+    id : Text;
+    name : Text;
+    uploadDate : Int;
+    uploadedBy : Text
+  };
+type OrderSettings__1028951853 =
+  {
+    constituencyId : Text;
+    orderHeaderEmail : Text;
+    orderHeaderLine1 : Text;
+    orderHeaderLine2 : Text;
+    orderHeaderPhone : Text;
+    orderOfficerConstituency : Text;
+    orderOfficerDesignation : Text;
+    orderOfficerName : Text;
+    orderOfficerTehsil : Text;
+    updatedAt : Int
+  };
+type PasswordHistoryEntry__810910633 =
+  {
+    action : Text;
+    changedBy : Text;
+    constituencyId : Text;
+    identifier : Text;
+    maskedPassword : Text;
+    note : Text;
+    role : Text;
+    timestamp : Int
+  };
+type PollingStation__1033581542 =
+  {
+    assignedSupervisorId : ?Text;
+    bloId : ?Text;
+    constituencyId : Text;
+    createdAt : Int;
+    id : Text;
+    latitude : ?Float;
+    location : Text;
+    longitude : ?Float;
+    partName : Text;
+    partNumber : Text;
+    updatedAt : Int
+  };
+type PrintRecord__89949826 =
+  {printedAt : Int; printedBy : Text; printedByName : Text};
+type QuarterlyPayment__278976209 =
+  {
+    amount : Nat;
+    bloId : Text;
+    constituencyId : Text;
+    createdAt : Int;
+    id : Text;
+    paidAt : ?Int;
+    quarter : Text;
+    status : Text
+  };
+type SupervisorHonorariumRequest__357108426 =
+  {
+    bloIds : [Text];
+    constituencyId : Text;
+    id : Text;
+    quarter : Text;
+    requestedAt : Int;
+    status : Text;
+    supervisorId : Text;
+    supervisorName : Text;
+    year : Text
+  };
+type Supervisor__126901337 =
+  {
+    assignedStationIds : [Text];
+    constituencyId : Text;
+    createdAt : Int;
+    designation : Text;
+    id : Text;
+    isActive : Bool;
+    isLocked : Bool;
+    loginAttempts : Nat;
+    name : Text;
+    password : ?Text;
+    phone : Text;
+    updatedAt : Int
+  };
+actor {
+  stable CONSTITUENCIES : [(Text, Text)];
+  stable var deleteHistory : [(Text, Text, Text, Text, Int)];
+  stable var noticeSettings : [NoticeSettings__710684804];
+  stable var orderSettings : [OrderSettings__1028951853];
+  stable state :
+    {
+      var aavakInwardCounters : [(Text, Nat)];
+      var aavakJavakEntries : [AavakJavakEntry__267854335];
+      var aavakOutwardCounters : [(Text, Nat)];
+      var appointmentDateChanges :
+        Map__222667396<Text,
+                        Map__222667396<Text, AppointmentDateChange__486183939>>;
+      var appointmentOrders : [AppointmentOrder__369927596];
+      var bloBankDetails : Map__222667396<Text, BankDetails__693143613>;
+      var blos : [BLO__441769439];
+      var constituencyConfigs : [ConstituencyConfig__210789113];
+      var extraPayments :
+        Map__222667396<Text, Map__222667396<Text, ExtraPayment__511053032>>;
+      var gpsLocationsList : [GPSLocation__997299511];
+      var honorariumConfigs :
+        Map__222667396<Text, HonorariumConfig__1043070861>;
+      var honorariumDistributions : [HonorariumDistribution__162515005];
+      var honorariumEligibilityOverrides : [HonorariumEligibility__792402];
+      var honorariumRecords : [HonorariumRecord__335692989];
+      var nodalOfficers : [NodalOfficer__944075465];
+      var noticeCounters : [(Text, Nat)];
+      var notices : [Notice__391022898];
+      var officialDocsMeta : [OfficialDocumentMeta__173003148];
+      var orderCounters : [(Text, Nat)];
+      var passwordHistoryList : [PasswordHistoryEntry__810910633];
+      var pollingStations : [PollingStation__1033581542];
+      var quarterlyPayments :
+        Map__222667396<Text,
+                        Map__222667396<Text, QuarterlyPayment__278976209>>;
+      var superAdminPwd : Text;
+      var supervisorBankDetails :
+        Map__222667396<Text, BankDetails__693143613>;
+      var supervisorHonorariumConfigs :
+        Map__222667396<Text, HonorariumConfig__1043070861>;
+      var supervisorHonorariumRequests :
+        [SupervisorHonorariumRequest__357108426];
+      var supervisorQuarterlyPayments :
+        Map__222667396<Text,
+                        Map__222667396<Text, QuarterlyPayment__278976209>>;
+      var supervisors : [Supervisor__126901337]
+    }
+};

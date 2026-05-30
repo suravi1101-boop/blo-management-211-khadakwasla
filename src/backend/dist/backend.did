@@ -1,0 +1,528 @@
+type SupervisorHonorariumRequest = 
+ record {
+   bloIds: vec text;
+   constituencyId: text;
+   id: text;
+   quarter: text;
+   requestedAt: int;
+   status: text;
+   supervisorId: text;
+   supervisorName: text;
+   year: text;
+ };
+type Supervisor = 
+ record {
+   assignedStationIds: vec text;
+   constituencyId: text;
+   createdAt: int;
+   designation: text;
+   id: text;
+   isActive: bool;
+   isLocked: bool;
+   loginAttempts: nat;
+   name: text;
+   password: opt text;
+   phone: text;
+   updatedAt: int;
+ };
+type QuarterlyPayment = 
+ record {
+   amount: nat;
+   bloId: text;
+   constituencyId: text;
+   createdAt: int;
+   id: text;
+   paidAt: opt int;
+   quarter: text;
+   status: text;
+ };
+type PrintRecord = 
+ record {
+   printedAt: int;
+   printedBy: text;
+   printedByName: text;
+ };
+type PollingStation = 
+ record {
+   assignedSupervisorId: opt text;
+   bloId: opt text;
+   constituencyId: text;
+   createdAt: int;
+   id: text;
+   latitude: opt float64;
+   location: text;
+   longitude: opt float64;
+   partName: text;
+   partNumber: text;
+   updatedAt: int;
+ };
+type PasswordHistoryEntry = 
+ record {
+   action: text;
+   changedBy: text;
+   constituencyId: text;
+   identifier: text;
+   maskedPassword: text;
+   note: text;
+   role: text;
+   timestamp: int;
+ };
+type OrderSettings = 
+ record {
+   constituencyId: text;
+   orderHeaderEmail: text;
+   orderHeaderLine1: text;
+   orderHeaderLine2: text;
+   orderHeaderPhone: text;
+   orderOfficerConstituency: text;
+   orderOfficerDesignation: text;
+   orderOfficerName: text;
+   orderOfficerTehsil: text;
+   updatedAt: int;
+ };
+type OfficialDocumentMeta = 
+ record {
+   category: text;
+   constituency: text;
+   fileKey: text;
+   id: text;
+   name: text;
+   uploadDate: int;
+   uploadedBy: text;
+ };
+type NoticeSettings = 
+ record {
+   constituencyId: text;
+   noticeHeaderEmail: text;
+   noticeHeaderLine1: text;
+   noticeHeaderLine2: text;
+   noticeHeaderPhone: text;
+   noticeOfficerConstituency: text;
+   noticeOfficerDesignation: text;
+   noticeOfficerName: text;
+   noticeOfficerTehsil: text;
+   updatedAt: int;
+ };
+type NoticeRecipientStatus = 
+ record {
+   deliveredAt: opt int;
+   deliveryStatus: text;
+   readAt: opt int;
+   recipientId: text;
+   recipientType: text;
+ };
+type Notice = 
+ record {
+   clearedAt: opt int;
+   clearedById: opt text;
+   clearedByName: opt text;
+   clearedForHonorarium: bool;
+   constituencyId: text;
+   content: text;
+   createdAt: int;
+   createdById: text;
+   createdByName: text;
+   createdByRole: text;
+   id: text;
+   issuedDate: int;
+   issuingAuthority: text;
+   noticeNumber: text;
+   noticeRecipients: vec NoticeRecipientStatus;
+   noticeType: text;
+   printHistory: vec PrintRecord;
+   recipientId: text;
+   recipientType: text;
+   status: text;
+   subject: text;
+   updatedAt: int;
+ };
+type NodalOfficer = 
+ record {
+   assignedSupervisorIds: vec text;
+   constituencyId: text;
+   createdAt: int;
+   designation: text;
+   id: text;
+   isActive: bool;
+   isLocked: bool;
+   loginAttempts: nat;
+   mobileNumber: opt text;
+   name: text;
+   password: opt text;
+   phone: text;
+   updatedAt: int;
+ };
+type HonorariumSummary = 
+ record {
+   constituencyId: text;
+   total: nat;
+   totalApproved: nat;
+   totalPaid: nat;
+   totalPending: nat;
+ };
+type HonorariumRecord = 
+ record {
+   amount: nat;
+   approvedAt: opt int;
+   approvedBy: opt text;
+   bloId: text;
+   constituencyId: text;
+   createdAt: int;
+   id: text;
+   note: opt text;
+   paidAt: opt int;
+   quarter: text;
+   status: text;
+   supervisorId: opt text;
+ };
+type HonorariumEligibilityResult = 
+ record {
+   bloId: text;
+   bloName: text;
+   exclusionReason: opt text;
+   isEligible: bool;
+   isManuallyOverridden: bool;
+   partNumber: text;
+ };
+type HonorariumDistribution = 
+ record {
+   baseAmount: nat;
+   constituencyId: text;
+   createdAt: int;
+   createdBy: text;
+   id: text;
+   note: text;
+   quarter: text;
+   year: text;
+ };
+type HonorariumConfig = 
+ record {
+   baseAmount: nat;
+   constituencyId: text;
+   currency: text;
+   effectiveFrom: int;
+ };
+type GPSTrackingRecord = 
+ record {
+   assignedBLOId: opt text;
+   assignedBLOName: opt text;
+   assignedBLOPhone: opt text;
+   assignedNodalOfficerId: opt text;
+   assignedNodalOfficerName: opt text;
+   assignedSupervisorId: opt text;
+   assignedSupervisorName: opt text;
+   constituencyId: text;
+   gpsLat: opt float64;
+   gpsLon: opt float64;
+   gpsUpdatedAt: opt int;
+   gpsUpdatedBy: opt text;
+   gpsUpdatedByName: opt text;
+   gpsUpdatedByRole: opt text;
+   location: text;
+   partName: text;
+   partNumber: text;
+   pollingStationId: text;
+ };
+type GPSLocation = 
+ record {
+   constituencyId: text;
+   lat: float64;
+   lon: float64;
+   pollingStationId: text;
+   updatedAt: int;
+   updatedBy: text;
+   updatedByName: text;
+   updatedByRole: text;
+ };
+type ExtraPayment = 
+ record {
+   amount: nat;
+   bloId: text;
+   bloName: opt text;
+   constituencyId: text;
+   createdAt: int;
+   id: text;
+   partNumber: opt text;
+   reason: text;
+   status: text;
+ };
+type ConstituencyConfig = 
+ record {
+   adminPassword: text;
+   id: text;
+   isEnabled: bool;
+   lockedUntil: opt int;
+   loginAttempts: nat;
+   name: text;
+   passwordChangedAt: int;
+   updatedAt: int;
+ };
+type BankDetails = 
+ record {
+   accountNumber: text;
+   bankName: text;
+   branchName: text;
+   ifscCode: text;
+ };
+type BLO = 
+ record {
+   aadhaar: opt text;
+   appointmentOrderId: opt text;
+   bankAccount: opt text;
+   constituencyId: text;
+   createdAt: int;
+   designation: text;
+   email: opt text;
+   id: text;
+   isExcellent: bool;
+   name: text;
+   officeAddress: opt text;
+   partName: text;
+   partNumber: text;
+   phone: text;
+   status: text;
+   updatedAt: int;
+   voterId: opt text;
+ };
+type AppointmentOrder = 
+ record {
+   bloId: text;
+   constituencyId: text;
+   content: text;
+   createdAt: int;
+   id: text;
+   issuedDate: int;
+   orderNumber: text;
+   status: text;
+ };
+type AppointmentDateChange = 
+ record {
+   bloId: text;
+   constituencyId: text;
+   createdAt: int;
+   id: text;
+   newDate: int;
+   oldDate: int;
+   reason: text;
+ };
+type AavakJavakEntry = 
+ record {
+   constituency: text;
+   createdBy: text;
+   date: int;
+   description: text;
+   documentType: text;
+   entryType: text;
+   fromTo: text;
+   id: text;
+   linkedDocId: opt text;
+   referenceNumber: text;
+ };
+service : {
+  addAavakJavakEntry: (entry: AavakJavakEntry) ->
+   (variant {
+      err: text;
+      ok: AavakJavakEntry;
+    });
+  addAppointmentDateChange: (constituencyId: text, change:
+   AppointmentDateChange) -> ();
+  addConstituency: (cid: text, cname: text, adminPassword: text) -> (bool);
+  addExtraPayment: (constituencyId: text, payment: ExtraPayment) -> ();
+  addNoticePrintRecord: (constituencyId: text, noticeId: text, printedBy:
+   text, printedByName: text) -> (opt Notice);
+  addOfficialDocMeta: (meta: OfficialDocumentMeta) ->
+   (variant {
+      err: text;
+      ok;
+    });
+  addPollingStation: (station: PollingStation) -> (bool);
+  addQuarterlyPayment: (constituencyId: text, payment: QuarterlyPayment) ->
+   ();
+  addSupervisorQuarterlyPayment: (constituencyId: text, payment:
+   QuarterlyPayment) -> ();
+  adminLogin: (cid: text, password: text) -> (bool);
+  approveHonorarium: (recordId: text, approvedById: text) -> (bool);
+  bulkSaveBLOs: (cid: text, blos: vec BLO) -> (nat);
+  bulkSaveGPSLocations: (cid: text, locations: vec GPSLocation) -> (bool);
+  bulkSaveNotices: (constituencyId: text, notices: vec Notice) -> (bool);
+  bulkSavePollingStations: (cid: text, stations: vec PollingStation) -> (nat);
+  changeAdminPassword: (cid: text, currentPassword: text, newPassword: 
+   text, changedBy: text) -> (bool);
+  changeNodalOfficerPassword: (cid: text, officerId: text, currentPassword:
+   text, newPassword: text) -> (bool);
+  changeSuperAdminPassword: (currentPassword: text, newPassword: text) ->
+   (bool);
+  changeSupervisorPassword: (cid: text, supervisorId: text, currentPassword:
+   text, newPassword: text) -> (bool);
+  clearNoticeForHonorarium: (noticeId: text, clearedById: text,
+   clearedByName: text) -> (bool);
+  createAppointmentOrder: (cid: text, bloId: text, content: text) ->
+   (AppointmentOrder);
+  createHonorariumRecord: ("record": HonorariumRecord) -> (bool);
+  createSupervisorHonorariumRequest: (request:
+   SupervisorHonorariumRequest) -> (bool);
+  deleteAavakJavakEntry: (id: text) -> (variant {
+                                          err: text;
+                                          ok;
+                                        });
+  deleteBLO: (bloId: text) -> (bool);
+  deleteBLOsByConstituency: (constituencyId: text) -> (bool);
+  deleteNodalOfficer: (cid: text, officerId: text) -> (bool);
+  deleteNotice: (constituencyId: text, noticeId: text) -> (bool);
+  deleteOfficialDocMeta: (id: text) -> (variant {
+                                          err: text;
+                                          ok;
+                                        });
+  deletePollingStation: (stationId: text) -> (bool);
+  deleteSupervisor: (cid: text, supervisorId: text) -> (bool);
+  disableAllConstituencies: () -> (bool);
+  enableAllConstituencies: () -> (bool);
+  getAavakJavakEntries: (constituency: text) -> (vec AavakJavakEntry);
+  getAllConstituencyConfigs: () -> (vec ConstituencyConfig);
+  getAllGPSLocations: () -> (vec GPSLocation);
+  getAppointmentDateChanges: (constituencyId: text) ->
+   (vec AppointmentDateChange) query;
+  getAppointmentDateChangesFresh: (constituencyId: text) ->
+   (vec AppointmentDateChange);
+  getAppointmentOrders: (cid: text) -> (vec AppointmentOrder);
+  getBLOBankDetails: (constituencyId: text, bloId: text) -> (opt BankDetails);
+  getBLOs: (cid: text) -> (vec BLO);
+  getBLOsBySupervisor: (cid: text, supervisorId: text) -> (vec BLO);
+  getConstituencyById: (cid: text) -> (opt ConstituencyConfig);
+  getConstituencyConfig: () -> (opt ConstituencyConfig);
+  /// Return the full deletion history log
+  getDeleteHistory: () -> (vec record {
+                                 text;
+                                 text;
+                                 text;
+                                 text;
+                                 int;
+                               }) query;
+  getEligibleBLOsForHonorarium: (constituencyId: text) -> (vec BLO) query;
+  getExtraPayments: (constituencyId: text) -> (vec ExtraPayment) query;
+  getExtraPaymentsByConstituency: (constituencyId: text) ->
+   (vec ExtraPayment) query;
+  getExtraPaymentsFresh: (constituencyId: text) -> (vec ExtraPayment);
+  getGPSLocationsFresh: (cid: text) -> (vec GPSLocation);
+  getGPSTrackingInfo: (cid: text) -> (vec GPSTrackingRecord);
+  getHonorariumByBLO: (bloId: text) -> (vec HonorariumRecord) query;
+  getHonorariumByConstituency: (constituencyId: text) ->
+   (vec HonorariumRecord) query;
+  getHonorariumByConstituencyFresh: (constituencyId: text) ->
+   (vec HonorariumRecord);
+  getHonorariumBySupervisor: (supervisorId: text) ->
+   (vec HonorariumRecord) query;
+  getHonorariumConfig: (constituencyId: text) -> (opt HonorariumConfig);
+  getHonorariumDistributions: (constituencyId: text) ->
+   (vec HonorariumDistribution) query;
+  getHonorariumEligibility: (constituencyId: text) ->
+   (vec HonorariumEligibilityResult) query;
+  getHonorariumSummary: (constituencyId: text) -> (HonorariumSummary) query;
+  /// Returns the NEXT outward counter number for a constituency WITHOUT incrementing.
+  /// Use this to preview the reference number before saving the order.
+  getNextOutwardCounter: (constituencyId: text) -> (nat) query;
+  getNodalOfficerBLOs: (nodalOfficerId: text, cid: text) ->
+   (vec Supervisor) query;
+  getNodalOfficerSupervisors: (nodalOfficerId: text, cid: text) ->
+   (vec Supervisor) query;
+  getNodalOfficers: (cid: text) -> (vec NodalOfficer);
+  getNoticeDeliveryReport: (constituencyId: text, noticeId: text) ->
+   (vec NoticeRecipientStatus) query;
+  getNoticeSettings: (constituencyId: text) -> (opt NoticeSettings) query;
+  getNotices: (constituencyId: text) -> (vec Notice) query;
+  getNoticesByCreator: (constituencyId: text, creatorId: text, creatorRole:
+   text) -> (vec Notice) query;
+  getNoticesByRecipient: (constituencyId: text, recipientId: text,
+   recipientType: text) -> (vec Notice) query;
+  getNoticesForDashboard: (constituencyId: text, viewerRole: text, viewerId:
+   text) -> (vec Notice) query;
+  getNoticesForNodalOfficer: (constituencyId: text, nodalOfficerId: text,
+   assignedSupervisorIds: vec text, supervisorBloIds: vec text) ->
+   (vec Notice) query;
+  getNoticesForNodalOfficerFresh: (constituencyId: text, nodalOfficerId:
+   text, assignedSupervisorIds: vec text, supervisorBloIds: vec text) ->
+   (vec Notice);
+  getNoticesForSupervisor: (constituencyId: text, supervisorId: text,
+   assignedBloIds: vec text) -> (vec Notice) query;
+  getNoticesForSupervisorFresh: (constituencyId: text, supervisorId: 
+   text, assignedBloIds: vec text) -> (vec Notice);
+  getNoticesFresh: (constituencyId: text) -> (vec Notice);
+  getOfficialDocMetas: (constituency: text) -> (vec OfficialDocumentMeta);
+  getOrderSettings: (constituencyId: text) -> (opt OrderSettings) query;
+  getPasswordHistory: (cid: text) -> (vec PasswordHistoryEntry);
+  getPollingStationGPS: (cid: text, stationId: text) ->
+   (opt record {
+          float64;
+          float64;
+        }) query;
+  getPollingStations: (cid: text) -> (vec PollingStation);
+  getQuarterlyPayments: (constituencyId: text) ->
+   (vec QuarterlyPayment) query;
+  getSupervisorBankDetails: (constituencyId: text, supervisorId: text) ->
+   (opt BankDetails);
+  getSupervisorHonorariumConfig: (constituencyId: text) ->
+   (opt HonorariumConfig);
+  getSupervisorHonorariumRequests: (constituencyId: text) ->
+   (vec SupervisorHonorariumRequest) query;
+  getSupervisorHonorariumRequestsBySupervisor: (supervisorId: text) ->
+   (vec SupervisorHonorariumRequest) query;
+  getSupervisorQuarterlyPayments: (constituencyId: text) ->
+   (vec QuarterlyPayment) query;
+  getSupervisors: (cid: text) -> (vec Supervisor);
+  /// Simple health check — confirms canister is live
+  healthCheck: () -> (text) query;
+  /// Increments the outward counter for a constituency and returns the new value.
+  /// Call this when the order is actually saved/issued.
+  incrementOutwardCounter: (constituencyId: text) -> (nat);
+  issueNotice: (constituencyId: text, notice: Notice) -> (Notice);
+  markHonorariumPaid: (recordId: text) -> (bool);
+  nodalOfficerLogin: (cid: text, phone: text, password: text) ->
+   (opt NodalOfficer);
+  /// Record a deletion event (type, name, deletedBy, reason) with current timestamp
+  recordDeletion: (recordType: text, recordName: text, deletedBy: text,
+   reason: text) -> ();
+  recordPasswordChange: (cid: text, role: text, identifier: text, changedBy:
+   text, note: text) -> (bool);
+  restoreHonorariumEligibility: (constituencyId: text, bloId: text,
+   clearedBy: opt text) -> (bool);
+  saveBLO: (blo: BLO) -> (bool);
+  saveGPSLocation: (cid: text, location: GPSLocation) -> (bool);
+  saveNodalOfficer: (officer: NodalOfficer) -> (bool);
+  saveNotice: (constituencyId: text, notice: Notice) -> (bool);
+  saveNoticeSettings: (settings: NoticeSettings) -> (bool);
+  saveOrderSettings: (settings: OrderSettings) -> (bool);
+  saveSupervisor: (supervisor: Supervisor) -> (bool);
+  setBLOBankDetails: (constituencyId: text, bloId: text, details:
+   BankDetails) -> ();
+  setConstituencyAdminPassword: (cid: text, newPassword: text, changedBy:
+   text) -> (bool);
+  setConstituencyEnabled: (cid: text, enabled: bool) -> (bool);
+  setHonorariumConfig: (constituencyId: text, config: HonorariumConfig) -> ();
+  setHonorariumDistribution: (dist: HonorariumDistribution) -> (bool);
+  setHonorariumExcludeOverride: (constituencyId: text, bloId: text,
+   isManuallyIncluded: bool, reason: opt text, overriddenBy: opt text) ->
+   (bool);
+  setPollingStationGPS: (cid: text, stationId: text, lat: float64, lon:
+   float64) -> (bool);
+  setSupervisorBankDetails: (constituencyId: text, supervisorId: text,
+   details: BankDetails) -> ();
+  setSupervisorHonorariumConfig: (constituencyId: text, config:
+   HonorariumConfig) -> ();
+  superAdminLogin: (password: text) -> (bool);
+  supervisorLogin: (cid: text, phone: text, password: text) ->
+   (opt Supervisor);
+  updateAppointmentOrder: (order: AppointmentOrder) -> (bool);
+  updateBLO: (blo: BLO) -> (bool);
+  updateNodalOfficer: (officer: NodalOfficer) -> (bool);
+  updateNotice: (constituencyId: text, notice: Notice) -> (bool);
+  updateNoticeDeliveryStatus: (constituencyId: text, noticeId: text,
+   recipientId: text, recipientType: text, newStatus: text) -> (bool);
+  updateNoticeRecipientStatus: (noticeId: text, recipientId: text, newStatus:
+   text, recipientType: text) -> (bool);
+  updatePollingStation: (station: PollingStation) -> (bool);
+  updateQuarterlyPayment: (constituencyId: text, payment:
+   QuarterlyPayment) -> ();
+  updateSupervisor: (supervisor: Supervisor) -> (bool);
+  updateSupervisorQuarterlyPayment: (constituencyId: text, payment:
+   QuarterlyPayment) -> ();
+}
