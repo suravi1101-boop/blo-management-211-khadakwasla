@@ -10,7 +10,7 @@ const ActorContext = createContext<BackendActor | null>(null);
 
 export function ActorProvider({ children }: { children: ReactNode }) {
   // useActor returns { actor, isFetching } — actor is null until canister ID is injected
-  const { actor } = useActor(createActor);
+  const { actor } = useActor(() => createActor());
   return (
     <ActorContext.Provider value={actor ?? null}>
       {children}
